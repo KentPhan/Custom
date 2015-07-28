@@ -1,0 +1,107 @@
+<!--BallClock app made by Kent Phan -->
+<head>
+	<title>Ball Clock</title>
+	<script src="BallClock.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+	//Run on document load
+	$(document).ready(function(){
+	
+		//On clicking to calculate the total number of possible cycles
+		$("#CalculateTotalCycles").click(function(){
+		
+			if(!CheckNumberOfBallsInput())
+				return;
+		
+			var balls = parseInt($("#NumberOfBalls").val());		
+			var BallC = new BallClock(balls);
+			var cycles = BallC.GetTotalCycles();
+			var days = ((cycles/60)/24);
+			$("#output").val(balls + " balls cycle after " + days + " days.");
+		});
+		
+		//On clicking to calculate a json string for the state of the ball clock after x time
+		$("#CalculateXTime").click(function(){
+			if(!CheckNumberOfBallsInput())
+				return;
+			if(!CheckMinutesInput())
+				return;
+			
+			var balls = parseInt($("#NumberOfBalls").val());	
+			var minutes = parseInt($("#Minutes").val());
+			
+			var BallC = new BallClock(balls);
+			BallC.RunMinutes(minutes);
+			$("#output").val(BallC.GetState());
+		});
+	});
+
+	//Checks Ball Number Input
+	function CheckNumberOfBallsInput()
+	{
+		var balls = parseInt($("#NumberOfBalls").val());
+		if(isNaN(balls) || balls < 27 || balls > 127)
+		{
+			alert("Need postive int between 27-127 for Number Of Balls");
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	//Checks Minute Input
+	function CheckMinutesInput()
+	{
+		var minutes = parseInt($("#Minutes").val());
+		if(isNaN(minutes) || minutes <0)
+		{
+			alert("Need Positive Int for Minutes")
+			return false;
+		}
+		else
+		{
+			return true;
+		}
+	}
+	
+	</script>
+	
+	<style>
+		div
+		{
+			margin: 10px 10px 10px 10px;
+		}
+		input{
+			margin-top: 5px;
+			margin-bottom: 5px;
+		}
+	</style>
+	
+</head>
+<body>
+	<h1>Ball Clock by Kent Phan</h1>
+	<div>
+		<label>Number Of Balls:</label>
+		<input id="NumberOfBalls" type="textbox" value="27"/>
+		</br>
+		<input id="CalculateTotalCycles" type="button" value="Calculate Total Cycles"/>
+		</br>
+	</div>
+
+	<div>
+		<label>Minutes:</label>
+		</br>
+		<input id="Minutes" type="textbox" value = "0"/>
+		</br>
+		<input id="CalculateXTime" type="button" value="Calculate JSON with X Minutes Elapsed"/>
+	</div>
+	
+	<div>
+		<label>Output:</label>
+		</br>
+		<textarea id="output" readonly ="true" rows="10" cols="50">
+		</textarea>
+	</div>
+</body>
