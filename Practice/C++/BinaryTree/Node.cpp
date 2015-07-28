@@ -1,9 +1,8 @@
 #include "Node.h"
 namespace Node
 {
-    Node::Node(Node *pare,int val)
+    Node::Node(int val)
     {
-        this->parent = pare;
         this->value = val;
     }
 

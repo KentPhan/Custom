@@ -5,10 +5,10 @@ all: $(objects)
 	g++ Node.o BinaryTree.o -o runtree
 
 BinaryTree.o: BinaryTree.cpp BinaryTree.h
-	g++ BinaryTree.cpp BinaryTree.h -o BinaryTree.o
+	g++ -c BinaryTree.cpp 
 
 Node.o: Node.cpp Node.h
-	g++ Node.cpp Node.h -o Node.o
+	g++ -c Node.cpp
 
 clean:
 	rm runtree $(objects)

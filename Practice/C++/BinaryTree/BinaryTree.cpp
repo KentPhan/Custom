@@ -5,10 +5,21 @@ namespace BinaryTree{
     {
     }
 
+    
+    ~BinaryTree(void)
+    {
+
+    }
+
     bool BinaryTree::Add(int i)
     {
-             
+                     
         return true;
+    }
+    
+    Node* BinaryTree::Traverse(Node* current,int value)
+    {
+        
     }
 
 

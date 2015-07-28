@@ -6,9 +6,8 @@ namespace Node
         public:
           Node *left;
           Node *right;
-          Node *parent;
           int value;
-          Node(Node *pare, int val);
+          Node( int val);
     };
 
 }
