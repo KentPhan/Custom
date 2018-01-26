@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.4.2/knockout-min.js"></script>
+</head>
+
+<body>
+
+
+	<div data-bind="foreach: set">
+		<input type="textbox" data-bind="value: $data"/>
+	</div>
+
+
+	<span data-bind="text: Display"></span>
+
+
+	<div data-bind="foreach: Result">
+	   <span data-bind="text: ($index()+1) +  ':  [' + $data +']'    " ></span>
+	   <br/>
+	</div>
+</body>
+
+
+
+
+
+<script type="text/javascript">
+
+	var viewModel;
+	$(function (){
+	
+		viewModel = new PageModel();
+		ko.applyBindings(viewModel);
+	
+	
+	
+	})
+
+
+
+	var PageModel = function(){
+		
+		var self = this;
+		self.set =  ko.observableArray(
+										[
+										ko.observable("A")
+										,ko.observable("B")
+										,ko.observable("C")
+										]);
+		self.set.subscribe(self.Recalculate);
+
+
+		self.Display = ko.observable("List the Power:" )
+		self.Result = ko.observableArray([]);
+
+		self.Recalculate = function(){	
+			self.Result.removeAll();
+			TraversePowerSet([],0);
+		}
+		
+		function TraversePowerSet (currentset, place){
+			var currentset = currentset.slice();
+		  
+			if((self.set().length) == place)
+			{
+				self.Result.push(currentset)
+				return;
+			}
+			
+			
+			// location for next iteration
+			var next = place  + 1;
+			
+			
+			// Traverse left
+			TraversePowerSet(currentset,next);
+			
+			// Traverse right
+			currentset.push(self.set()[place]());
+			TraversePowerSet(currentset,next )
+		}
+		
+		self.Recalculate();
+	}
+
+</script>
+
+
+
+
+
+

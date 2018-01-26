@@ -20,6 +20,27 @@ namespace BinaryTree{
     Node* BinaryTree::Traverse(Node* current,int value)
     {
         
+        if(!current)
+        {
+            Node* newNode = new Node(value);
+            return newNode;
+        }
+        
+        if(current->value == value)
+        {
+            return current;
+        }
+        else if(current->value < value)
+        {
+            return current   
+        }
+        else
+        {
+            
+        }
+
+
+      
     }
 
 
