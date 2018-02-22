@@ -35,7 +35,24 @@ namespace DataStructuresDemo
             Console.WriteLine();
 
             // Problem 2 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-            Console.WriteLine("Problem 2: ");
+            // Basic Merge Sort
+            Console.WriteLine("Problem 2: Looping Merge Sort Basic");
+            Random randomNumber = new Random();
+            int[] inputSet2 = new int[20];
+            for(int i = 0; i < inputSet2.Length; i++)
+            {
+                inputSet2[i] = randomNumber.Next(0,20);
+            }
+            List<int> correctAnswer = inputSet2.ToList();
+            correctAnswer.Sort();
+
+            Console.WriteLine("Input Set:");
+            Console.WriteLine( string.Join(",", inputSet2));
+            LoopingMergeSort(inputSet2);
+            Console.WriteLine("Merge Sorted Set:");
+            Console.WriteLine(string.Join(",", inputSet2));
+            Console.WriteLine("Correct Answer:");
+            Console.WriteLine(string.Join(",", correctAnswer));
 
             Console.Read();
         }
@@ -70,6 +87,104 @@ namespace DataStructuresDemo
             // Traverse Right (If Item would be in the set)
             currentSetCopy.Add(inputSet[place]);
             TraverseSet(currentSetCopy, next, inputSet, powerSetList);
+        }
+
+        /// <summary>
+        /// Problem 2 Solution. Basic Looping Merge Sort
+        /// </summary>
+        /// <param name="items"></param>
+        private static void LoopingMergeSort(int[] items)
+        {
+            int gapSize = 1;
+            int pairPos = 0;
+
+            // Merge Levels
+            while(gapSize < items.Count())
+            {
+                // Merge items in level
+                while (pairPos < items.Count())
+                {
+                    //Console.WriteLine("Pair:" + pairPos + "," + (pairPos + gapSize ));
+                    Merge(items, pairPos, pairPos + gapSize, pairPos +  (2*gapSize) - 1);
+
+                    pairPos = pairPos + (2 * gapSize);
+                }
+
+                //Console.WriteLine("GAPSIZE:" + gapSize + " STATE: " + string.Join(",", items));
+                pairPos = 0;
+                gapSize = gapSize * 2;
+            }
+        }
+
+        /// <summary>
+        /// Merge for Problem 2
+        /// </summary>
+        /// <param name="items"></param>
+        /// <param name="left"></param>
+        /// <param name="right"></param>
+        private static void Merge(int[] items, int left, int right, int rightE)
+        {
+            int leftPos = left;
+            int leftStart = left;
+            int leftEnd = right - 1;
+            int rightPos = right;
+            int rightStart = right;
+            int rightEnd = rightE;
+            int fillPos = left;
+
+            if (items.Count() <= 0 || left >= right )
+                return;
+
+            int[] toReturn = new int[items.Count()];
+            items.CopyTo(toReturn, 0);
+            
+            while ((leftPos < items.Count() && rightPos < items.Count()) && (leftPos <= leftEnd && rightPos <= rightEnd))
+            {
+                
+                // If implementing Comparators, they eventually go here
+
+                // Merge left Item in
+                if (items[leftPos] <= items[rightPos])
+                {
+                    toReturn[fillPos] = items[leftPos];
+                    leftPos++;
+                }
+
+                // Merge right Item in
+                else if (items[rightPos] < items[leftPos] )
+                {
+                    toReturn[fillPos] = items[rightPos];
+                    rightPos++;
+                }
+                else
+                {
+                    throw new Exception("Could not merge");
+                }
+                
+                //Console.WriteLine("Inner Merge State " + string.Join(",", items) + "----" + string.Join(",", toReturn));
+                
+                fillPos++;
+            }
+
+            while(leftPos < items.Count() && leftPos <= leftEnd)
+            {
+                toReturn[fillPos] = items[leftPos];
+                leftPos++;
+                fillPos++;
+            }
+
+
+            while(rightPos < items.Count() && rightPos <= rightEnd )
+            {
+                toReturn[fillPos] = items[rightPos];
+                rightPos++;
+                fillPos++;
+            }
+
+
+            //Console.WriteLine("Inner STATE: " + string.Join(",", toReturn));
+
+            toReturn.CopyTo(items, 0);
         }
     }
 }
