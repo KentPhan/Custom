@@ -1,0 +1,11 @@
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\bin\Debug\CSVGeneratorHelpers.exe.config
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\bin\Debug\CSVGeneratorHelpers.exe
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\bin\Debug\CSVGeneratorHelpers.pdb
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\bin\Debug\CsvHelper.dll
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\bin\Debug\ExcelDataReader.dll
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\bin\Debug\CsvHelper.xml
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\bin\Debug\ExcelDataReader.xml
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\obj\Debug\CSVGeneratorHelpers.csprojResolveAssemblyReference.cache
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\obj\Debug\CSVGeneratorHelpers.csproj.CoreCompileInputs.cache
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\obj\Debug\CSVGeneratorHelpers.exe
+c:\users\kent\documents\visual studio 2017\Projects\CSVGeneratorHelpers\CSVGeneratorHelpers\obj\Debug\CSVGeneratorHelpers.pdb
